@@ -1,0 +1,12 @@
+{
+  "backend_url": "https://localhost:9081/",
+  "localhost_url": "https://localhost:9081/",
+  "front_end": "http://localhost:3000",
+  "logo_empresa": "",
+  "nome_empresa": "RFA",
+  "cors_origins": ["https://rfaconsulting.pt"],
+  "bot_email": "elearnitmods@gmail.com",
+  "email_API_key": "xoqncbxgjfckemxf",
+  "port": 9081,
+  "URI": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTi"
+}

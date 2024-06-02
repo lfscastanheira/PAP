@@ -1,0 +1,8 @@
+{
+  "pdf_style": "striped",
+  "max_upload_size": 10,
+  "port": 9081,
+  "cors_origins": "http://localhost:3000",
+	"bot_email":"elearnitmods@gmail.com",
+	"email_API_key":"xoqncbxgjfckemxf"
+}

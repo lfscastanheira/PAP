@@ -1,0 +1,130 @@
+sh: server.sh: No such file or directory
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+/home/rfaconsu/public_html/etrainit/server/server.js:266
+    if (err) console.error(err);y
+                                ^
+
+ReferenceError: y is not defined
+    at /home/rfaconsu/public_html/etrainit/server/server.js:266:33
+    at /home/rfaconsu/public_html/etrainit/server/db/conn.js:35:14
+    at wrapper (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/utils.js:371:9)
+    at err (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/mongo_client.js:117:17)
+    at connectCallback (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/operations/connect.js:29:9)
+    at topology.connect.err (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/operations/connect.js:81:9)
+    at Object.selectServer [as callback] (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/sdam/topology.js:209:65)
+    at processWaitQueue (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/sdam/topology.js:604:25)
+    at Topology.serverUpdateHandler (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/sdam/topology.js:364:13)
+    at Server.server.on.description (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/sdam/topology.js:479:77)
+Server is running on port: 9081
+Successfully connected to MongoDB.
+/home/rfaconsu/public_html/etrainit/server/server.js:266
+    if (err) console.error(err);y
+                                ^
+
+ReferenceError: y is not defined
+    at /home/rfaconsu/public_html/etrainit/server/server.js:266:33
+    at /home/rfaconsu/public_html/etrainit/server/db/conn.js:35:14
+    at wrapper (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/utils.js:371:9)
+    at err (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/mongo_client.js:117:17)
+    at connectCallback (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/operations/connect.js:29:9)
+    at topology.connect.err (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/operations/connect.js:81:9)
+    at Object.selectServer [as callback] (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/sdam/topology.js:209:65)
+    at processWaitQueue (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/sdam/topology.js:604:25)
+    at Topology.serverUpdateHandler (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/sdam/topology.js:364:13)
+    at Server.server.on.description (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/sdam/topology.js:479:77)
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Email sent to yes@yes.yes: 250 2.0.0 OK  1675954672 n2-20020a5d67c2000000b002c53f6c7599sm636970wrw.29 - gsmtp
+All document updated
+All document updated
+Email sent to yes@yes.yes: 250 2.0.0 OK  1675955199 l1-20020a5d6741000000b002bdd96d88b4sm1543124wrw.75 - gsmtp
+All document updated
+Server is running on port: 9081
+Successfully connected to MongoDB.
+All document updated
+All document updated
+All document updated
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+All document updated
+Server is running on port: 9081
+Successfully connected to MongoDB.
+All document updated
+Server is running on port: 9081
+Successfully connected to MongoDB.
+All document updated
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+63e5119d66c33ba651794481
+63e5119d66c33ba651794481
+All document updated
+63e5119d66c33ba651794481
+/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb-connection-string-url/lib/index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read property 'startsWith' of undefined
+    at connectionStringHasValidScheme (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb-connection-string-url/lib/index.js:9:30)
+    at new ConnectionString (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb-connection-string-url/lib/index.js:85:34)
+    at parseOptions (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/connection_string.js:209:17)
+    at new MongoClient (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/mongo_client.js:44:63)
+    at Object.<anonymous> (/home/rfaconsu/public_html/etrainit/server/db/conn.js:5:16)
+    at Module._compile (internal/modules/cjs/loader.js:689:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+    at Module.load (internal/modules/cjs/loader.js:599:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb-connection-string-url/lib/index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read property 'startsWith' of undefined
+    at connectionStringHasValidScheme (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb-connection-string-url/lib/index.js:9:30)
+    at new ConnectionString (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb-connection-string-url/lib/index.js:85:34)
+    at parseOptions (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/connection_string.js:209:17)
+    at new MongoClient (/home/rfaconsu/public_html/etrainit/server/node_modules/mongodb/lib/mongo_client.js:44:63)
+    at Object.<anonymous> (/home/rfaconsu/public_html/etrainit/server/db/conn.js:5:16)
+    at Module._compile (internal/modules/cjs/loader.js:689:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+    at Module.load (internal/modules/cjs/loader.js:599:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.
+Server is running on port: 9081
+Successfully connected to MongoDB.

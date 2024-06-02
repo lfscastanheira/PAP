@@ -1,0 +1,14 @@
+iframe{
+	border-radius: 1%;
+	/*background-color: red;*/
+}
+
+.calendario{
+	display: flex;
+	align-self: left;
+}
+
+.cHeader{
+	display: flex;
+	justify-content: space-between;
+}

@@ -1,0 +1,55 @@
+@font-face {
+	font-family: "Montserrat-Medium";
+	font-weight: normal;
+	src: local("Montserrat-Medium"),
+		url("./fonts/Montserrat-Medium.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Montserrat-Regular";
+	font-weight: 600;
+	src: local("Montserrat-SemiBold.ttf"),
+		url("./fonts/Montserrat-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Montserrat-Bold";
+	font-weight: 700;
+	src: local("Montserrat-Bold"),
+		url("./fonts/Montserrat-Bold.ttf") format("truetype");
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	min-height: 100vh;
+	font-size: 15px;
+	overflow: hidden;
+	background-color: #eef3f6;
+}
+
+* {
+	font-family: "Montserrat-Medium", sans-serif;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 2px #9ca0a6;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #9ca0a6;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #3f4349;
+}
