@@ -6,6 +6,7 @@ import {
 	availableColors,
 } from "../../../contexts/DynamicThemeProvider";
 import { Container } from "../../../styles/AdminStyles";
+import {SketchPicker} from 'react-color';
 
 const Select = styled.select`
 	width: 50%;
@@ -46,7 +47,7 @@ const Design = () => {
 			<Container>
 				<Divider>
 					<Field>
-						<b>Tema:</b>
+						<b>Temas Predefinidos:</b>
 						<Select
 							onChange={(e) => changeMainColor(e.target.value)}
 							name='color picker'
@@ -66,6 +67,17 @@ const Design = () => {
 								);
 							})}
 						</Select>
+					</Field>
+				</Divider>
+				<Divider>
+					<Field>
+						<b>Cor Personalizada:</b>
+						<SketchPicker
+							color={currentColor}
+							onChange={(color) => {
+								changeMainColor(color.hex);
+							}}
+						/>
 					</Field>
 				</Divider>
 			</Container>

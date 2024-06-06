@@ -69,116 +69,116 @@ const AuthWrapper = ({ authOnly, name }) => {
 
 const App = () => {
 	const routes = [
-		{ path: "/home", element: <Home />, authOnly: false },
+		{ path: "/home", element: <Home />, authOnly: true },
 		{
 			path: "/Admin/evaluations/:id",
 			element: <Evaluations />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Formandos",
 			path: "/Admin/students",
 			element: <Students />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Formandos",
 			path: "/Admin/students/form/:id?",
 			element: <StudentsForm />,
-			authOnly: false,
+			authOnly: true,
 		},
 
 		{
 			name: "Formadores",
 			path: "/Admin/teachers",
 			element: <Teachers />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Formadores",
 			path: "/Admin/teachers/form/:id?",
 			element: <TeachersForm />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Cursos",
 			path: "/Admin/courses",
 			element: <Courses />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Cursos",
 			path: "/Admin/courses/form/:id?",
 			element: <CoursesForm />,
-			authOnly: false,
+			authOnly: true,
 		},
 
 		{
 			name: "Ações de Formação",
 			path: "/Admin/actions",
 			element: <Actions />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Ações de Formação",
 			path: "/Admin/actions/form/:id?",
 			element: <ActionsForm />,
-			authOnly: false,
+			authOnly: true,
 		},
 
 		{
 			name: "Módulos",
 			path: "/Admin/modules",
 			element: <AdminModules />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Módulos",
 			path: "/Admin/modules/form/:id?",
 			element: <ModulesForm />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{ path: "/search/:query?", element: <Search />, authOnly: false },
 		{
 			name: "Calendarização",
 			path: "/Admin/calendar",
 			element: <AdminCalendar />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Calendarização",
 			path: "/Admin/calendar/form",
 			element: <CalendarForm />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Geral",
 			path: "/config/general",
 			element: <ConfigGeneral />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Admin",
 			path: "/config/admin",
 			element: <ConfigAdmin />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Design",
 			path: "/config/design",
 			element: <ConfigDesign />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			name: "Salas",
 			path: "/config/rooms",
 			element: <ConfigRooms />,
-			authOnly: false,
+			authOnly: true,
 		},
 		{
 			path: "/config/rooms/form/:id?",
 			element: <ConfigRoomsForm />,
-			authOnly: false,
+			authOnly: true,
 		},
 	];
 	return (

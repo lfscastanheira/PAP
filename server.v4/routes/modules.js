@@ -34,6 +34,17 @@ module.exports = function(dbo, recordRoutes) {
 		})
 	});
 
+	recordRoutes.delete("/module/:id", (req, res) => {
+        const { id } = req.params;
+
+        try {
+            dbo.delete(res, "modules", { _id: ObjectId(id) });
+        } catch (error) {
+            console.error("Invalid ID format:", error);
+            res.status(400).json({ error: "Invalid ID format" });
+        }
+    });
+
 	recordRoutes.get("/module/:id", (req, res) => {
 
 		const { id } = req.params

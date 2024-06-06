@@ -14,6 +14,8 @@ import {
 	EditIcon,
 	HeaderDivider,
 	TableField,
+	Delete,
+	DeleteIcon,
 } from "../../../styles/AdminStyles";
 import { Notify } from "notiflix";
 
@@ -47,6 +49,23 @@ const AdminModules = () => {
 		}
 		setLoading(false);
 	}, [query]);
+
+	const deleteModule = async (data) => {
+		try {
+			await api.delete(`/module/${data._id}`);
+			Notify.success("Módulo Excluído");
+
+			const result = await api.get(`/modules`);
+			setModules(result.data);
+		} catch (error) {
+			if (error.response && error.response.status === 404) {
+				Notify.failure("Módulo não encontrado");
+			} else {
+				Notify.failure("Erro ao excluir Módulo");
+			}
+			console.error("Error deleting module:", error);
+		}
+	};
 
 	return (
 		<>
@@ -83,6 +102,11 @@ const AdminModules = () => {
 													<Edit to={`/Admin/modules/form/${module._id}`}>
 														<EditIcon size={14} />
 													</Edit>
+												</TableIconContainer>
+												<TableIconContainer>
+													<Delete onClick={() => deleteModule(module)}>
+														<DeleteIcon size={14} />
+													</Delete>
 												</TableIconContainer>
 												{module.abbreviation}
 											</Field>

@@ -14,6 +14,7 @@ import {
 	Image,
 	Monitor,
 	Menu,
+	BarChart2
 } from "react-feather";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
@@ -88,7 +89,11 @@ const Sidebar = () => {
 
 	const { user } = useContext(AuthContext);
 
-	const logout = () => navigate("/");
+	const logout = () => {
+		localStorage.removeItem("user");
+		navigate("/");
+		window.location.reload();
+	};
 
 	const [pedagogyOpen, setPedagogyOpen] = useState(false);
 	const [settingsOpen, setSettingsOpen] = useState(false);
@@ -148,7 +153,7 @@ const Sidebar = () => {
 					</Page>
 					<Accordion open={settingsOpen}>
 						<PageLink key='Geral' path='/config/general' name='Geral'>
-							<Paperclip size={14} />
+							<BarChart2 size={14} />
 						</PageLink>
 						<PageLink key='Admin' path='/config/admin' name='Admin'>
 							<Shield size={14} />

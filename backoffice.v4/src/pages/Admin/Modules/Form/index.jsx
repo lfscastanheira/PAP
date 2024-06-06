@@ -45,11 +45,18 @@ const ModulesForm = () => {
 	const methods = useForm();
 
 	const onSubmit = (data) => {
-		if (id && !clone.current) {
-			api.put(`/module/${id}`, data).then(() => {
-				Notify.success("Módulo editado!");
+		console.log(clone.current);
+		if (id) {
+			if(clone.current){
+				//mensagem de erro e redirect
+				Notify.failure("Não é possível editar um módulo que está associado a um curso!");
 				navigate("/Admin/modules");
-			});
+			}else{
+				api.put(`/module/${id}`, data).then(() => {
+					Notify.success("Módulo editado!");
+					navigate("/Admin/modules");
+				});
+			}
 		} else {
 			api.post("/module", data).then(() => {
 				Notify.success("Módulo criado!");
