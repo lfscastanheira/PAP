@@ -65,15 +65,17 @@ const TeachersForm = () => {
 		if (id) {
 			await api.put(`/teacher/${id}`, data);
 			await filesApi.patch(`/teacher/${id}/files`, files);
+			Notify.success("Formador Editado!");
+			navigate("/Admin/teachers");
 		} else {
 			const id = await api.post("/teacher", data).then((result) => {
 				return result.data.insertedId;
 			});
 			await filesApi.patch(`/teacher/${id}/files`, files);
+			Notify.success("Formador criado!");
+			navigate("/Admin/teachers");
 		}
 
-		Notify.success("Formador criado!");
-		navigate("/Admin/teachers");
 	};
 	return (
 		<>
