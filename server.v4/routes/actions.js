@@ -99,6 +99,10 @@ module.exports = function(dbo, recordRoutes) {
 			teachersId
 		} = req.body
 
+		const validStudents = Array.isArray(students) ? students : [];
+		const validModulesId = Array.isArray(modulesId) ? modulesId : [];
+		const validTeachersId = Array.isArray(teachersId) ? teachersId : [];
+
 		dbo.call().collection("actions").updateOne(
 			{ _id: ObjectId(id) },
 			{
@@ -127,12 +131,33 @@ module.exports = function(dbo, recordRoutes) {
 					startLevel,
 					state,
 					finalLevel,
-					students: students.map(student => ObjectId(student)),
-					modulesId: modulesId.map(moduleId => ObjectId(moduleId)),
-					teachersId: teachersId.map(teacherId => ObjectId(teacherId)),
+					students: validStudents.filter(student => typeof student === 'string').map(student => ObjectId(student)),
+					modulesId: validModulesId.filter(moduleId => typeof moduleId === 'string').map(moduleId => ObjectId(moduleId)),
+					teachersId: validTeachersId.filter(teacherId => typeof teacherId === 'string').map(teacherId => ObjectId(teacherId)),
 				}
-			})
+			},
+			(err, result) => {
+				if (err) {
+					res.status(500).json({ error: 'An error occurred while updating the record.' });
+				} else {
+					res.status(200).json({ message: 'Record updated successfully.' });
+				}
+			}
+		);
 	})
+
+	recordRoutes.delete("/action/:id", (req, res) => {
+        
+        const { id } = req.params;
+        
+        try{
+            dbo.delete(res, "actions", { _id: ObjectId(id) });
+        }catch(error){
+            console.error("Invalid ID format:", error);
+            res.status(400).json({ error: "Invalid ID format" });
+        }
+
+    });
 
 	recordRoutes.get("/action/:id", (req, res) => {
 

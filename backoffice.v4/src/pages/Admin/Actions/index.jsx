@@ -13,6 +13,8 @@ import {
 	Edit,
 	Add,
 	EditIcon,
+	Delete,
+	DeleteIcon,
 	HeaderDivider,
 	TableField,
 } from "../../../styles/AdminStyles";
@@ -24,18 +26,24 @@ const StarIcon = styled(Star)`
 `;
 
 const HeaderDivision = styled(HeaderDivider)`
-	width: 10%;
-	:nth-child(2),
+	width: 25%;
+	:nth-child(2){
+		width: 45%;
+	}
+	:nth-child(3),
 	:nth-child(4) {
-		width: 40%;
+		width: 15%;
 	}
 `;
 
 const Field = styled(TableField)`
-	width: 10%;
-	:nth-child(2),
+	width: 25%;
+	:nth-child(2){
+		width: 45%;
+	}
+	:nth-child(3),
 	:nth-child(4) {
-		width: 40%;
+		width: 15%;
 	}
 `;
 
@@ -44,6 +52,10 @@ const Edit2 = styled(Edit)`
 `;
 
 const TableIconContainer2 = styled(TableIconContainer)`
+	margin-left: 1rem;
+`;
+
+const TableIconContainer3 = styled(TableIconContainer)`
 	margin-left: 1rem;
 `;
 
@@ -63,6 +75,23 @@ const Actions = () => {
 		}
 		setLoading(false);
 	}, [query]);
+
+	const deleteAction = async (data) => {
+		try {
+			await api.delete(`/action/${data._id}`);
+			Notify.success("Ação Excluída");
+
+			const result = await api.get(`/actions?code=${query}`);
+			setActions(result.data);
+		} catch (error) {
+			if (error.response && error.response.status === 404) {
+				Notify.failure("Ação não encontrada");
+			} else {
+				Notify.failure("Erro ao excluir Ação");
+			}
+			console.error("Error deleting action:", error);
+		}
+	};
 
 	return (
 		<>
@@ -107,6 +136,11 @@ const Actions = () => {
 													<StarIcon size={14} />
 												</Edit2>
 											</TableIconContainer2>
+											<TableIconContainer3>
+												<Delete onClick={() => deleteAction(action)}>
+													<DeleteIcon size={14} />
+												</Delete>
+											</TableIconContainer3>
 											{action.code}
 										</Field>
 										<Field>{action.course}</Field>

@@ -27,6 +27,9 @@ const ActionsForm = () => {
 
 	const [tab, setTab] = useState(0);
 	const [course, setCourse] = useState({});
+	const [sawStudents, setSawStudents] = useState(false);
+	const [sawModules, setSawModules] = useState(false);
+	const [sawTeachers, setSawTeachers] = useState(false);
 
 	const nextTab = () => setTab((tab) => tab + 1);
 	const previousTab = () => setTab((tab) => tab - 1);
@@ -34,15 +37,56 @@ const ActionsForm = () => {
 	const methods = useForm();
 	const { control } = useForm();
 
-	const onSubmit = (data) => {
-		data["modulesId"] = modulesFields.map((field) => field._id);
-		data["students"] = studentFields.map((field) => field._id);
-		data["teachersId"] = teacherFields.map((field) => field._id);
+	const onSubmit = async (data) => {
 
-		api.post("/action", data).then(() => {
-			Notify.success("Ação de formação criada!");
+		try {
+			if(id){
+
+				if(!sawTeachers){
+					const result = await api.get(`/action/${id}`);
+					console.log(result);
+					if(sawModules){
+						data["modulesId"] = modulesFields.map((field) => field._id);
+						data["students"] = result.data.students;
+						data["teachersId"] = result.data.teachersId;
+					}else if(sawStudents){
+						data["modulesId"] = modulesFields.map((field) => field._id);
+						data["students"] = studentFields.map((field) => field._id);
+						data["teachersId"] = result.data.teachersId;
+					}else{
+						data["modulesId"]=result.data.modulesId;
+						data["students"]=result.data.students;
+						data["teachersId"]=result.data.teachersId;
+					}
+				}else{
+					data["modulesId"] = modulesFields.map((field) => field._id);
+					data["students"] = studentFields.map((field) => field._id);
+					data["teachersId"] = teacherFields.map((field) => field._id);
+				}
+				
+				try {
+					console.log("About to make PUT request");
+					const response = await api.put(`/action/${id}`, data);
+					console.log("PUT request completo", response);
+					Notify.success("Ação de formação atualizada!");
+				} catch (error) {
+					console.log("An error occurred during the PUT request:", error);
+				}
+
+			} else {
+				data["modulesId"] = modulesFields.map((field) => field._id);
+				data["students"] = studentFields.map((field) => field._id);
+				data["teachersId"] = teacherFields.map((field) => field._id);
+		
+				await api.post("/action", data);
+				Notify.success("Ação de formação criada!");
+			}
+		} catch (error) {
+			console.log("An error occurred:", error);
+			Notify.error("Ocorreu um erro na criação ou edição da ação formação.");
+		} finally {
 			navigate("/Admin/actions");
-		});
+		}
 	};
 
 	const resetAsyncForm = useCallback(async () => {
@@ -55,6 +99,16 @@ const ActionsForm = () => {
 	useEffect(() => {
 		resetAsyncForm();
 	}, [resetAsyncForm]);
+
+	useEffect(()=>{
+		if(tab==2){
+			setSawModules(true);
+		}else if(tab==3){
+			setSawStudents(true);
+		}else if(tab==4){
+			setSawTeachers(true);
+		}
+	}, [tab]);
 
 	const resetModules = async (option) => {
 		modulesFields.forEach((field) => modulesRemove(field));

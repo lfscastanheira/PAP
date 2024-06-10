@@ -75,7 +75,6 @@ const ThirdTab = ({
 						getOptionLabel={(option) => option.designation}
 						getOptionValue={(option) => option._id}
 						menuPortalTarget={document.body}
-						required
 					/>
 					<ModulesList>
 						{fields?.map((field, index) => (

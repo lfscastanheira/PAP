@@ -68,7 +68,6 @@ const FifthTab = ({ previousTab, courseModules, fields, append, remove }) => {
 						getOptionLabel={(option) => option.name}
 						getOptionValue={(option) => option._id}
 						menuPortalTarget={document.body}
-						required
 					/>
 					<ModulesList>
 						{fields?.map((field, index) => (
