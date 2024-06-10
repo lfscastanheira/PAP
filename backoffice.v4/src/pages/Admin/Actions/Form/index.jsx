@@ -44,28 +44,33 @@ const ActionsForm = () => {
 
 				if(!sawTeachers){
 					const result = await api.get(`/action/${id}`);
-					console.log(result);
 					if(sawModules){
+						console.log(result.data);
 						data["modulesId"] = modulesFields.map((field) => field._id);
-						data["students"] = result.data.students;
-						data["teachersId"] = result.data.teachersId;
+						data["students"] = result.data.students.map((student)=> student._id)
+						data["teachersId"] = result.data.teachers.map((teacher) => teacher._id);
+						console.log("sawModules");
 					}else if(sawStudents){
 						data["modulesId"] = modulesFields.map((field) => field._id);
 						data["students"] = studentFields.map((field) => field._id);
-						data["teachersId"] = result.data.teachersId;
+						data["teachersId"] = result.data.teachers.map((teacher) => teacher._id);
+						console.log("sawStudents");
 					}else{
-						data["modulesId"]=result.data.modulesId;
-						data["students"]=result.data.students;
-						data["teachersId"]=result.data.teachersId;
+						data["modulesId"]=result.data.modules.map((modulee)=> modulee._id)
+						data["students"] = result.data.students.map((student)=> student._id)
+						data["teachersId"] = result.data.teachers.map((teacher) => teacher._id);
+						console.log("nada");
 					}
 				}else{
 					data["modulesId"] = modulesFields.map((field) => field._id);
 					data["students"] = studentFields.map((field) => field._id);
 					data["teachersId"] = teacherFields.map((field) => field._id);
+					console.log("tudo");
 				}
 				
 				try {
 					console.log("About to make PUT request");
+					console.log(data);
 					const response = await api.put(`/action/${id}`, data);
 					console.log("PUT request completo", response);
 					Notify.success("Ação de formação atualizada!");
@@ -100,15 +105,19 @@ const ActionsForm = () => {
 		resetAsyncForm();
 	}, [resetAsyncForm]);
 
-	useEffect(()=>{
-		if(tab==2){
+	useEffect(() => {
+		console.log("entrei");
+		console.log("sawModules:", sawModules);
+		console.log("sawStudents:", sawStudents);
+		console.log("sawTeachers:", sawTeachers);
+		if (tab === 2) {
 			setSawModules(true);
-		}else if(tab==3){
+		} else if (tab === 3) {
 			setSawStudents(true);
-		}else if(tab==4){
+		} else if (tab === 4) {
 			setSawTeachers(true);
 		}
-	}, [tab]);
+	}, [tab, setSawModules, setSawStudents, setSawTeachers, sawModules, sawStudents, sawTeachers]);
 
 	const resetModules = async (option) => {
 		modulesFields.forEach((field) => modulesRemove(field));
