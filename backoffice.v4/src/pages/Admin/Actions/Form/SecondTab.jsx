@@ -39,6 +39,7 @@ const SecondTab = ({ previousTab, nextTab, course }) => {
 						<NavigationButton onClick={previousTab}>
 							<EnabledPrevious size={24} />
 						</NavigationButton>
+						2/5
 						<NavigationButton onClick={nextTab}>
 							<EnabledNext size={24} />
 						</NavigationButton>

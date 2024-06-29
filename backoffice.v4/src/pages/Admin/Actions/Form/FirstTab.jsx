@@ -67,6 +67,7 @@ const FirstTab = ({ nextTab, resetModules, courseName }) => {
 						<NavigationButton disabled={true}>
 							<Previous size={24} />
 						</NavigationButton>
+						1/5
 						<NavigationButton onClick={nextTab}>
 							<EnabledNext size={24} />
 						</NavigationButton>

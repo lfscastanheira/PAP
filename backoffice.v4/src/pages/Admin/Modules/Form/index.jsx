@@ -76,7 +76,7 @@ const ModulesForm = () => {
 							</HeaderDivider>
 							<HeaderDivider>
 								<HeaderDividerTitle>
-									{clone.current ? "Módulos - editar como cópia" : "Módulos"}
+									{"Módulos"}
 								</HeaderDividerTitle>
 							</HeaderDivider>
 							<HeaderDivider>

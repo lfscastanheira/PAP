@@ -106,7 +106,7 @@ const Sidebar = () => {
 					<Menu size={24} />
 				</MenuButton>
 				<SidebarLogoContainer open={DivOpen}>
-					<LogoButton href='/home'>
+					<LogoButton href='https://rfaconsulting.pt'>
 						<LogoSvg />
 					</LogoButton>
 				</SidebarLogoContainer>
@@ -152,7 +152,7 @@ const Sidebar = () => {
 						Configurações
 					</Page>
 					<Accordion open={settingsOpen}>
-						<PageLink key='Geral' path='/config/general' name='Geral'>
+						<PageLink key='Geral' path='/config/general' name='Stats'>
 							<BarChart2 size={14} />
 						</PageLink>
 						<PageLink key='Admin' path='/config/admin' name='Admin'>

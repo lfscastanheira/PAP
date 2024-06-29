@@ -61,6 +61,7 @@ const ThirdTab = ({
 						<NavigationButton onClick={previousTab}>
 							<EnabledPrevious size={24} />
 						</NavigationButton>
+						3/5
 						<NavigationButton onClick={nextTab}>
 							<EnabledNext size={24} />
 						</NavigationButton>

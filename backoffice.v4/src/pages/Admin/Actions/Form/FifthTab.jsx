@@ -54,6 +54,7 @@ const FifthTab = ({ previousTab, courseModules, fields, append, remove }) => {
 						<NavigationButton onClick={previousTab}>
 							<EnabledPrevious size={24} />
 						</NavigationButton>
+						5/5
 						<NavigationButton disabled={true}>
 							<Next size={24} />
 						</NavigationButton>

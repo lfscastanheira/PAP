@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Edit2, Trash } from "react-feather";
+import { Edit2, Star, Trash } from "react-feather";
 
 export const Container = styled.div`
 	display: flex;
@@ -126,6 +126,11 @@ margin-left: 1rem;
 	}
 `;
 
+export const StarContainer = styled(Link)`
+	position: absolute;
+	margin-left: 1.5rem;
+`;
+
 export const EditIcon = styled(Edit2)`
 	color: ${(props) => props.theme.colors.primary};
 	align-self: center;
@@ -134,6 +139,11 @@ export const EditIcon = styled(Edit2)`
 
 export const DeleteIcon = styled(Trash)`
 	color: ${(props) => props.theme.colors.primary};
+	align-self: center;	
+`;
+
+export const StarIconGold = styled(Star)`
+	color: gold;
 	align-self: center;	
 `;
 

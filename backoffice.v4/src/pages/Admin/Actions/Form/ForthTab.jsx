@@ -61,6 +61,7 @@ const ForthTab = ({
 						<NavigationButton onClick={previousTab}>
 							<EnabledPrevious size={24} />
 						</NavigationButton>
+						4/5
 						<NavigationButton onClick={nextTab}>
 							<EnabledNext size={24} />
 						</NavigationButton>

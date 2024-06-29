@@ -1,3 +1,5 @@
+const {ObjectId} = require("mongodb");
+
 module.exports = function(dbo, recordRoutes) {
 
 
@@ -27,7 +29,8 @@ module.exports = function(dbo, recordRoutes) {
 			{
 				$project: {
 					username: 1,
-					email: 1
+					email: 1,
+					superAdmin: 1
 				}
 			}
 		]).toArray((err, result) => {
@@ -37,17 +40,51 @@ module.exports = function(dbo, recordRoutes) {
 
 	})
 
+	recordRoutes.get("/superadmins", (req, res) => {
+		dbo.call().collection("admins").find({ superAdmin: true }).toArray((err, result) => {
+			if (err) throw err;
+			res.json(result);
+		});
+	});
+
+	recordRoutes.delete("/admin/:id", (req, res) => {
+        const { id } = req.params;
+
+        try {
+            dbo.delete(res, "admins", { _id: ObjectId(id) });
+        } catch (error) {
+            console.error("Invalid ID format:", error);
+            res.status(400).json({ error: "Invalid ID format" });
+        }
+    });
+
+	recordRoutes.get("/admins/:usernameOrEmail", (req, res) => {
+		const { usernameOrEmail } = req.params;
+
+		dbo.call().collection("admins").find({
+			$or: [
+				{ username: usernameOrEmail },
+				{ email: usernameOrEmail }
+			]
+		}).project({ password: 0 }).toArray((err, result) => {
+			if (err) throw err;
+			res.json(result);
+		});
+	});
+
 	recordRoutes.post("/admin", (req, res) => {
 		const {
 			username,
 			email,
-			password
+			password,
+			superAdmin
 		} = req.body
 
 		dbo.insert(res, "admins", {
 			username,
 			email,
-			password
+			password,
+			superAdmin
 		})
 	})
 

@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState({});
 	const [notificationsAmount, setNotificationsAmount] = useState("");
 	const isAuth = !!Object.keys(user).length;
+	const isSuperAdmin = user.superAdmin;
 
 	const setUserData = (userData) => {
 		if (!userData) return;
@@ -18,7 +19,7 @@ const AuthProvider = ({ children }) => {
 			id: userData._id,
 			username: userData.username,
 			email: userData.email,
-			role: userData.role,
+			superAdmin: userData.superAdmin,
 		});
 
 		//  api.get(`/messages/${userData._id}/unread_amount`).then((result) => {
@@ -34,16 +35,18 @@ const AuthProvider = ({ children }) => {
 		setIsLoading(true);
 	
 		// Criptografa a senha fornecida pelo usuário
-		const hashedPassword = cryptoJs.SHA256(password).toString();
+		const hashedPassword = JSON.stringify(cryptoJs.SHA256(password).words);
+		/* JSON.stringify(cryptoJs.SHA256(data.password).words) */
 	
 		const result = await api
 			.post(`/login`, {
 				userOrEmail,
-				password: password, // Envia a senha criptografada para o backend
+				password: hashedPassword, // Envia a senha criptografada para o backend
 			})
 			.then((result) => {
 				setUserData(result.data);
 				localStorage.setItem("user", JSON.stringify(result.data));
+/* 				localStorage.setItem("rfa.color", "#3f4349"); */
 				return { login: true };
 			})
 			.catch((e) => {
@@ -62,6 +65,7 @@ const AuthProvider = ({ children }) => {
 				user,
 				notificationsAmount,
 				isAuth,
+				isSuperAdmin,
 			}}
 		>
 			{children}

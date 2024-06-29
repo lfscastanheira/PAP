@@ -37,6 +37,7 @@ import ConfigRooms from "./pages/Config/Rooms";
 import ConfigRoomsForm from "./pages/Config/Rooms/Form";
 
 import ConfigDesign from "./pages/Config/Design";
+import { Notify } from "notiflix";
 
 const Container = styled.div`
 	background-color: ${(props) => props.theme.colors.background};
@@ -50,12 +51,18 @@ const Container = styled.div`
 	}
 `;
 
-const AuthWrapper = ({ authOnly, name }) => {
+const AuthWrapper = ({ superOnly, authOnly, name }) => {
 	const location = useLocation();
 	const { isAuth } = useContext(AuthContext);
+	const { isSuperAdmin } = useContext(AuthContext);
 
 	return authOnly && !isAuth ? (
-		<Navigate to='/' replace state={{ from: location }} />
+		<Navigate to="/" replace state={{ from: location }} />
+	) : superOnly && !isSuperAdmin ? (
+		<>
+			{Notify.failure("Não têm permissões para aceder a esta aba!")}
+			<Navigate to="/Admin/students" replace state={{ from: location }} />
+		</>
 	) : (
 		<>
 			<Sidebar />
@@ -152,7 +159,7 @@ const App = () => {
 			authOnly: true,
 		},
 		{
-			name: "Geral",
+			name: "Stats",
 			path: "/config/general",
 			element: <ConfigGeneral />,
 			authOnly: true,
@@ -162,12 +169,13 @@ const App = () => {
 			path: "/config/admin",
 			element: <ConfigAdmin />,
 			authOnly: true,
+			superOnly: true,
 		},
 		{
 			name: "Design",
 			path: "/config/design",
 			element: <ConfigDesign />,
-			authOnly: true,
+			authOnly: false,
 		},
 		{
 			name: "Salas",
@@ -192,7 +200,7 @@ const App = () => {
 								<Route
 									key={route.path}
 									element={
-										<AuthWrapper authOnly={route.authOnly} name={route.name} />
+										<AuthWrapper superOnly={route.superOnly} authOnly={route.authOnly} name={route.name} />
 									}
 								>
 									<Route
